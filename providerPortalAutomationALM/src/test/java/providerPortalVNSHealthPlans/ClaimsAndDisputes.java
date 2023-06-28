@@ -291,12 +291,9 @@ public class ClaimsAndDisputes extends BaseTest {
 		
 	}
 	
-	@Test(priority = 4, testName = "7.3 PROV-TECH-REQ-030 - Claims - Verify Display historical claims in table format")
+	@Test(priority = 4, testName = "7.4 PROV-TECH-REQ-031 - Claims - Verify Display historical claims in card format")
 	public void verifyDisplayClaimsCardFormat() throws InterruptedException, IOException {
 		Thread.sleep(5000);
-
-		
-		
 		ArrayList TS0007 = d.getData("TS0007", "TC0030");
 		String claimPath = (String) TS0007.get(5);
 		WebElement claims = driver.findElement(By.xpath(claimPath));
@@ -306,7 +303,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
-		//CLAIM CARD NOT DISPLAYED ONLY MOBILE VIEW
+		//CLAIM CARD NOT DISPLAYED; ONLY MOBILE VIEW
 		Thread.sleep(5000);
 		ArrayList TS0008 = d.getData("TS0008", "TC0030");
 		String claimCardPath = (String) TS0008.get(5);
@@ -316,4 +313,31 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 	}
+	
+	@Test(priority = 6, testName = "7.6 PROV-TECH-REQ-033- Claims - Verify Provide the ability to export data if data is in a table view")
+	public void verifyExportClaimData() throws InterruptedException, IOException {
+		Thread.sleep(5000);
+		ArrayList TS0007 = d.getData("TS0007", "TC0032");
+		String claimPath = (String) TS0007.get(5);
+		WebElement claims = driver.findElement(By.xpath(claimPath));
+		claims.click();
+		Thread.sleep(5000);
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+//click Export
+		Thread.sleep(5000);
+		ArrayList TS0008 = d.getData("TS0008", "TC0032");
+		String claimExportBtnPath = (String) TS0008.get(5);
+		WebElement claimsExportBtn = driver.findElement(By.xpath(claimExportBtnPath));
+		claimsExportBtn.click();
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+		
+		Thread.sleep(5000);
+
+		check_file_exist("ClaimsDataExport.csv");
+	}
+
 }

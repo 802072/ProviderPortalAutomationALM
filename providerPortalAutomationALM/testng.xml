@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Regression">
-	<!--	<test name="3.1 Verify Provider Profile Info Displayed">
+
+	<!--<test name="3.1 Verify Provider Profile Info Displayed">
 		<parameter
-	name="browserName" value="Chrome" />
+			name="browserName" value="Chrome" />
 		<parameter name="author"
-	value="Dayanzi" />
+			value="Dayanzi" />
 		<classes>
 			<class
-	name="providerPortalVNSHealthPlans.ProfileManagement">
+				name="providerPortalVNSHealthPlans.ProfileManagement">
 				<methods>
-	<include name="loginProvider" />
-					<include name="verifyProfileDisplay"
-	/>
+					<include name="loginProvider" />
+					<include name="verifyProfileDisplay" />
 				</methods>
 			</class>
 		</classes>
-	</test>-->
+	</test>
 
-	<!--	<test name="3.2 Verify Submit Profile Info Update Request">
+	<test name="3.2 Verify Submit Profile Info Update Request">
 		<parameter
-	name="browserName" value="Chrome" />
+			name="browserName" value="Chrome" />
 		<parameter name="author"
-	value="Dayanzi" />
+			value="Dayanzi" />
 		<classes>
 			<class
-	name="providerPortalVNSHealthPlans.ProfileManagement">
+				name="providerPortalVNSHealthPlans.ProfileManagement">
 				<methods>
-	<include name="loginProvider" />
+					<include name="loginProvider" />
 					<include
-	name="verifySubmitProfileInfoUpdate" />
+						name="verifySubmitProfileInfoUpdate" />
 				</methods>
 			</class>
-	</classes>
+		</classes>
 	</test>
--->
 
-	<!--			<test name="3.3 Verify Admin can Register Group, Add/remove Group
+
+	<test
+		name="3.3 Verify Admin can Register Group, Add/remove Group
 	Members, Add/Remove Permission to User">
 		<parameter name="browserName"
-	value="Chrome" />
+			value="Chrome" />
 		<parameter name="author" value="Dayanzi" />
 		<classes>
-	<class name="providerPortalVNSHealthPlans.ProfileManagement">
+			<class name="providerPortalVNSHealthPlans.ProfileManagement">
 				<methods>
-	<include name="loginAdmin" />
+					<include name="loginAdmin" />
 					<include
-	name="verifyAdminManageGroups"/>
+						name="verifyAdminManageGroups" />
 				</methods>
 			</class>
 		</classes>
-	</test>-->
+	</test>
 
-	<!--	<test name="3.4 Verify Update Provider Panel Status">
+	<test name="3.4 Verify Update Provider Panel Status">
 		<parameter
-	name="browserName" value="Chrome" />
+			name="browserName" value="Chrome" />
 		<parameter name="author"
-	value="Dayanzi" />
+			value="Dayanzi" />
 		<classes>
 			<class
-	name="providerPortalVNSHealthPlans.ProfileManagement">
+				name="providerPortalVNSHealthPlans.ProfileManagement">
 				<methods>
-	<include name="loginProvider" />
-					<include
-	name="verifyProviderPanelStatusUpdate" />
+					<include name="loginProvider" />
+					<include name="verifyProviderPanelStatusUpdate" />
 				</methods>
 			</class>
-	</classes>
-	</test>-->
+		</classes>
+	</test>
 
 	<test
 		name="3.6 PROV-TECH-REQ-006 - Registration - Verify Provide
@@ -86,91 +86,142 @@
 		</classes>
 	</test>
 
-	<!--	<test
+	<test
 		name="4.2 PROV-TECH-REQ-009 - Member Roster - Verify Create a
 	lightning page to display member roster information">
 		<parameter
-	name="browserName" value="Chrome" />
+			name="browserName" value="Chrome" />
 		<parameter name="author"
-	value="Dayanzi" />
+			value="Dayanzi" />
 		<classes>
 			<class
-	name="providerPortalVNSHealthPlans.MemberRoster">
+				name="providerPortalVNSHealthPlans.MemberRoster">
 				<methods>
 					<include
-	name="loginAdmin" />
+						name="loginAdmin" />
 					<include name="verifyDisplayMemberRosterInfo" />
-	</methods>
-			</class>
-		</classes>
-	</test>-->
-
-	<!--		<test
-		name="4.2 PROV-TECH-REQ-009 - Member Roster - Verify Create a
-	lightning page to display member roster information">
-		<parameter
-	name="browserName" value="Chrome" />
-		<parameter name="author"
-	value="Dayanzi" />
-		<classes>
-			<class
-	name="providerPortalVNSHealthPlans.PatientReferralForEnrollment">
-				<methods>
-	<include name="loginProvider" />
-					<include
-	name="verifyPatientRefEnrollment" />
-				</methods>
-			</class>
-		</classes>
-	</test>-->
-
-	<!--	<test name="6.3 PROV-TECH-REQ-027 - Patient Referrals for Enrollment -
-	Verify For prospective providers, display a link to FAQs/Knowledge Article
-	to search for information">
-		<parameter name="browserName" value="Chrome"
-	/>
-		<parameter name="author" value="Dayanzi" />
-		<classes>
-			<class
-	name="providerPortalVNSHealthPlans.PatientReferralForEnrollment">
-				<methods>
-	<include name="loginProvider" />
-					<include
-	name="verifyResourcesLinkDisplay" />
-				</methods>
-			</class>
-		</classes>
-	</test>-->
-	<!--	<test name="7.1 PROV-TECH-REQ-028 - Claims - Verify Create a lightning
-	page to display claim information">
-		<parameter name="browserName"
-	value="Chrome" />
-		<parameter name="author" value="Dayanzi" />
-		<classes>
-	<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
-				<methods>
-	<include name="loginProvider" />
-					<include
-	name="verifyClaimInfoDisplay" />
 				</methods>
 			</class>
 		</classes>
 	</test>
 
-	<test name="7.3 PROV-TECH-REQ-030 - Claims - Verify Display
-	historical claims in table format">
-		<parameter name="browserName"
-	value="Chrome" />
+	<test
+		name="4.2 PROV-TECH-REQ-009 - Member Roster - Verify Create a
+	lightning page to display member roster information">
+		<parameter
+			name="browserName" value="Chrome" />
+		<parameter name="author"
+			value="Dayanzi" />
+		<classes>
+			<class
+				name="providerPortalVNSHealthPlans.PatientReferralForEnrollment">
+				<methods>
+					<include name="loginProvider" />
+					<include
+						name="verifyPatientRefEnrollment" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test
+		name="6.1 PROV-TECH-REQ-025 - Patient Referrals for Enrollment -
+	Verify Provide the ability to capture a Referral for Enrollment">
+		<parameter
+			name="browserName" value="Chrome" />
+		<parameter name="author"
+			value="Dayanzi" />
+		<classes>
+			<class
+				name="providerPortalVNSHealthPlans.PatientReferralForEnrollment">
+				<methods>
+					<include name="loginProvider" />
+					<include
+						name="verifyPatientRefEnrollment" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test
+		name="6.3 PROV-TECH-REQ-027 - Patient Referrals for Enrollment -
+	Verify For prospective providers, display a link to FAQs/Knowledge Article
+	to search for information">
+		<parameter name="browserName" value="Chrome" />
 		<parameter name="author" value="Dayanzi" />
 		<classes>
-	<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
+			<class
+				name="providerPortalVNSHealthPlans.PatientReferralForEnrollment">
 				<methods>
-	<include name="loginProvider" />
+					<include name="loginProvider" />
+					<include name="verifyResourcesLinkDisplay" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test
+		name="7.1 PROV-TECH-REQ-028 - Claims - Verify Create a lightning
+	page to display claim information">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
+				<methods>
+					<include name="loginProvider" />
 					<include
-	name="verifyClaimInfoDisplay" />
+						name="verifyClaimInfoDisplay" />
 				</methods>
 			</class>
 		</classes>
 	</test> -->
+
+<!--	<test
+		name="7.2 PROV-TECH-REQ-029 - Claims - Verify Provide the ability to send search parameters to return claim data">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
+				<methods>
+					<include name="loginProvider" />
+					<include
+						name="verifySearchClaimData" />
+				</methods>
+			</class>
+		</classes>
+	</test>-->
+
+<!--	<test
+		name="7.3 PROV-TECH-REQ-030 - Claims - Verify Display
+	historical claims in table format">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
+				<methods>
+					<include name="loginProvider" />
+					<include
+						name="verifyClaimInfoDisplay" />
+				</methods>
+			</class>
+		</classes>
+	</test>-->
+		<test
+		name="7.6 PROV-TECH-REQ-033- Claims - Verify Provide the ability to export data if data is in a table view">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.ClaimsAndDisputes">
+				<methods>
+					<include name="loginProvider" />
+					<include
+						name="verifyExportClaimData" />
+				</methods>
+			</class>
+		</classes>
+	</test>
 
 </suite> 
