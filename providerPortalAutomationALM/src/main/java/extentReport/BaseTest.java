@@ -49,7 +49,7 @@ public class BaseTest {
 	public static ExtentTest extentTest;
 	public static ExtentTest testStepExtentTest;
 	String myhomePage = "https://providerportal.vnshealthplans.org/login";
-	String excelPath = "C:\\Users\\802072\\eclipse-workspace1\\providerPortalAutomationALM\\src\\test\\resources\\testData\\testData.xlsx";
+	String excelPath = "C:\\Users\\802072\\git\\ProviderPortalAutomationALM\\providerPortalAutomationALM\\src\\test\\resources\\testCases\\testCases.xlsx";
 	String sheetName = "loginInfo";
 	dataDrivenPP d = new dataDrivenPP();
 	

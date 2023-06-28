@@ -18,7 +18,7 @@ public class dataDrivenPP {
 		ArrayList<String> a = new ArrayList<String>();
 
 		FileInputStream fis = new FileInputStream(
-				"C:\\Users\\802072\\eclipse-workspace1\\providerPortalAutomationALM\\src\\test\\resources\\testData\\testData.xlsx");
+				"C:\\Users\\802072\\git\\ProviderPortalAutomationALM\\providerPortalAutomationALM\\src\\test\\resources\\testCases\\testCases.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int sheets = workbook.getNumberOfSheets();
