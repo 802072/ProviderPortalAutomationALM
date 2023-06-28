@@ -512,9 +512,6 @@ public class ProfileManagement extends BaseTest {
 		// information. ')]")).getText(),
 		// "We have captured your information.");
 
-		// extentTest.log(Status.PASS, "TSCC006: Click Next Button and Verify Message
-		// Captured",
-		// MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("TSCC006.jpg")).build());
 		ArrayList TS0043 = d.getData("TS0043", "TC0002");
 		String finishBtnPath = (String) TS0043.get(5);
 		WebElement finishBtn = driver.findElement(By.xpath(finishBtnPath));
@@ -524,8 +521,6 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description43,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description43 + ".jpg")).build());
 
-		// extentTest.log(Status.PASS, "TSCC007: Click Finish",
-		// MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("TSCC007.jpg")).build());
 	}
 
 	@Test(priority = 3, testName = "3.3 PROV-TECH-REQ-003 - Profile Management - Verify Provide the ability for an Admin to register a group, add/remove members from groups and add/remote appropriate permissions to users")
@@ -562,6 +557,114 @@ public class ProfileManagement extends BaseTest {
 
 	@Test(priority = 4, testName = "3.4 PROV-TECH-REQ-004 - Profile Management - Verify Provide the ability for a provider to update their Provider Panel Status")
 	public void verifyProviderPanelStatusUpdate() throws InterruptedException, IOException {
+		ArrayList TS0007 = d.getData("TS0007", "TC0004");
+		String myAccPath = (String) TS0007.get(5);
+		WebElement myAcc = driver.findElement(By.xpath(myAccPath));
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+		try {
+			myAcc.click();
+		} catch (StaleElementReferenceException e) {
+			myAcc = driver.findElement(By.xpath(myAccPath));
+			myAcc.click();
+		}
+
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+		Thread.sleep(5000);
+		// Assert.assertEquals(driver.findElement(By.xpath("//h1[normalize-space()='Account
+		// Information']")).getText(),
+		// "Account Information");
+		// PROVIDER PRAC
+
+		TS0007 = d.getData("TS0008", "TC0004");
+		String provPracDrpDwnPath = (String) TS0007.get(5);
+		WebElement provPractice = driver.findElement(By.xpath(provPracDrpDwnPath));
+		provPractice.click();
+		Thread.sleep(5000);
+		String description8 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+		Thread.sleep(5000);
+
+		ArrayList TS0009 = d.getData("TS0009", "TC0004");
+		String internalMedPath = (String) TS0009.get(5);
+		WebElement internalMed = driver.findElement(By.xpath(internalMedPath));
+		internalMed.click();
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+
+		// Request Change
+		ArrayList TS0010 = d.getData("TS0010", "TC0004");
+		String changeRequest = (String) TS0010.get(5);
+		WebElement reqChangeBtn = driver.findElement(By.xpath(changeRequest));
+		reqChangeBtn.click();
+		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
+		extentTest.log(Status.PASS, description10,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
+
+		// Panel Status
+		ArrayList TS0011 = d.getData("TS0011", "TC0004");
+		String panelStatus = (String) TS0011.get(5);
+		WebElement panelStatusBtn = driver.findElement(By.xpath(panelStatus));
+		panelStatusBtn.click();
+		String description11 = (String) TS0011.get(0) + " " + TS0011.get(1);
+		extentTest.log(Status.PASS, description11,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description11 + ".jpg")).build());
+
+		ArrayList TS0012 = d.getData("TS0012", "TC0004");
+		String newPanelOption = (String) TS0012.get(5);
+		WebElement newPanelSelect = driver.findElement(By.xpath(newPanelOption));
+		newPanelSelect.click();
+		String description12 = (String) TS0012.get(0) + " " + TS0012.get(1);
+		extentTest.log(Status.PASS, description12,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description12 + ".jpg")).build());
+
+		ArrayList TS0013 = d.getData("TS0013", "TC0004");
+		String panelOption = (String) TS0013.get(5);
+		WebElement optionNewPanel = driver.findElement(By.xpath(panelOption));
+		optionNewPanel.click();
+		String description13 = (String) TS0013.get(0) + " " + TS0013.get(1);
+		extentTest.log(Status.PASS, description13,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description13 + ".jpg")).build());
+
+		// NextBtn
+		ArrayList TS0014 = d.getData("TS0014", "TC0004");
+		String nextBtnPath = (String) TS0014.get(5);
+		WebElement nextBtn = driver.findElement(By.xpath(nextBtnPath));
+		nextBtn.click();
+		String description14 = (String) TS0014.get(0) + " " + TS0014.get(1);
+		extentTest.log(Status.PASS, description14,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description14 + ".jpg")).build());
+
+		Thread.sleep(5000);
+		// NextPage
+		ArrayList TS0015 = d.getData("TS0015", "TC0004");
+		String nextBtnPath1 = (String) TS0015.get(5);
+		WebElement nextBtn1 = driver.findElement(By.xpath(nextBtnPath1));
+		nextBtn1.click();
+		String description15 = (String) TS0015.get(0) + " " + TS0015.get(1);
+		extentTest.log(Status.PASS, description15,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description15 + ".jpg")).build());
+
+		// Assert.assertEquals(driver
+		// .findElement(By.xpath("//span[contains(text(),'We have captured your
+		// information. ')]")).getText(),
+		// "We have captured your information.");
+
+		// extentTest.log(Status.PASS, "TSCC006: Click Next Button and Verify Message
+		// Captured",
+		// MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("TSCC006.jpg")).build());
+		ArrayList TS0016 = d.getData("TS0016", "TC0004");
+		String finishBtnPath = (String) TS0016.get(5);
+		WebElement finishBtn = driver.findElement(By.xpath(finishBtnPath));
+		finishBtn.click();
+		Thread.sleep(5000);
+		String description16 = (String) TS0016.get(0) + " " + TS0016.get(1);
+		extentTest.log(Status.PASS, description16,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description16 + ".jpg")).build());
 
 	}
 
@@ -572,13 +675,13 @@ public class ProfileManagement extends BaseTest {
 
 	@Test(priority = 6, testName = "3.6 PROV-TECH-REQ-006 - Registration - Verify Provide the ability for Providers to self-register for portal access")
 	public void verifyProviderSelfRegister() throws InterruptedException, IOException {
-		
-		//Initiate Browser
+
+		// Initiate Browser
 		ArrayList TS0001 = d.getData("TS0001", "TC0006");
 		String description1 = (String) TS0001.get(0) + " " + TS0001.get(1);
 		extentTest.log(Status.PASS, description1);
 
-		//Get Login Page
+		// Get Login Page
 		ArrayList TS0002 = d.getData("TS0002", "TC0006");
 		String loginUrl = (String) TS0002.get(6);
 		driver.get(loginUrl);
@@ -586,7 +689,7 @@ public class ProfileManagement extends BaseTest {
 		String description2 = (String) TS0002.get(0) + " " + TS0002.get(1);
 		extentTest.log(Status.PASS, description2,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description2 + ".jpg")).build());
-		
+
 		ArrayList TS0003 = d.getData("TS0003", "TC0006");
 		String resisterBtnPath = (String) TS0003.get(5);
 		WebElement registerBtn = driver.findElement(By.xpath(resisterBtnPath));
@@ -605,8 +708,7 @@ public class ProfileManagement extends BaseTest {
 
 		ArrayList TS0005 = d.getData("TS0005", "TC0006");
 		String providerRolePath = (String) TS0005.get(5);
-		WebElement providerOption = driver
-				.findElement(By.xpath(providerRolePath));
+		WebElement providerOption = driver.findElement(By.xpath(providerRolePath));
 		providerOption.click();
 		String description5 = (String) TS0005.get(0) + " " + TS0005.get(1);
 		extentTest.log(Status.PASS, description5,
@@ -637,25 +739,24 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 		Thread.sleep(5000);
-		
-		ArrayList TS0009 = d.getData("TS0009", "TS0006");
+
+		ArrayList TS0009 = d.getData("TS0009", "TC0006");
 		String npiPath = (String) TS0009.get(5);
 		WebElement npi = driver.findElement(By.xpath(npiPath));
 		npi.sendKeys((String) TS0009.get(6));
 		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
 		extentTest.log(Status.PASS, description9,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
-		
-		ArrayList TS0010 = d.getData("TS0010", "TS0006");
+
+		ArrayList TS0010 = d.getData("TS0010", "TC0006");
 		String emailPath = (String) TS0010.get(5);
-		WebElement email = driver.findElement(By.xpath("//input[@name='email']"));
+		WebElement email = driver.findElement(By.xpath(emailPath));
 		email.sendKeys((String) TS0010.get(6));
 		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
 		extentTest.log(Status.PASS, description10,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
-		
-		
-		ArrayList TS0011 = d.getData("TS0011", "TS0006");
+
+		ArrayList TS0011 = d.getData("TS0011", "TC0006");
 		String confirmEmailPath = (String) TS0011.get(5);
 		WebElement confirmEmail = driver.findElement(By.xpath(confirmEmailPath));
 		confirmEmail.sendKeys((String) TS0011.get(6));
@@ -663,16 +764,16 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description11,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description11 + ".jpg")).build());
 
-		ArrayList TS0012 = d.getData("TS0012", "TS0006");
+		ArrayList TS0012 = d.getData("TS0012", "TC0006");
 		String phonePath = (String) TS0012.get(5);
-		WebElement phoneNumber = driver.findElement(By.xpath("//input[@name='phoneNumber']"));
+		WebElement phoneNumber = driver.findElement(By.xpath(phonePath));
 		phoneNumber.sendKeys((String) TS0012.get(6));
 		String description12 = (String) TS0012.get(0) + " " + TS0012.get(1);
 		extentTest.log(Status.PASS, description12,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description12 + ".jpg")).build());
 
 		// NETWORK STATUS
-		ArrayList TS0013 = d.getData("TS0013", "TS0006");
+		ArrayList TS0013 = d.getData("TS0013", "TC0006");
 		String networkStatPath = (String) TS0013.get(5);
 		WebElement networkStatus = driver.findElement(By.xpath(networkStatPath));
 		networkStatus.click();
@@ -680,9 +781,8 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description13,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description13 + ".jpg")).build());
 
-
 		// Check/EFT#
-		ArrayList TS0014 = d.getData("TS0014", "TS0006");
+		ArrayList TS0014 = d.getData("TS0014", "TC0006");
 		String checkPath = (String) TS0014.get(5);
 		WebElement checkNoIndicator = driver.findElement(By.xpath(checkPath));
 		checkNoIndicator.click();
@@ -690,7 +790,7 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description14,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description14 + ".jpg")).build());
 
-		ArrayList TS0015 = d.getData("TS0015", "TS0006");
+		ArrayList TS0015 = d.getData("TS0015", "TC0006");
 		String checkNumPath = (String) TS0015.get(5);
 		WebElement checkNoInput = driver.findElement(By.xpath(checkNumPath));
 		checkNoInput.sendKeys((String) TS0015.get(6));
@@ -698,7 +798,7 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description15,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description15 + ".jpg")).build());
 
-		ArrayList TS0016 = d.getData("TS0016", "TS0006");
+		ArrayList TS0016 = d.getData("TS0016", "TC0006");
 		String loginInfoPath = (String) TS0016.get(5);
 		WebElement loginInfo = driver.findElement(By.xpath(loginInfoPath));
 		loginInfo.click();
@@ -707,7 +807,7 @@ public class ProfileManagement extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description16 + ".jpg")).build());
 
 		// CREATE LOGIN INFO
-		ArrayList TS0017 = d.getData("TS0017", "TS0006");
+		ArrayList TS0017 = d.getData("TS0017", "TC0006");
 		String usernamePath = (String) TS0017.get(5);
 		WebElement newUsername = driver.findElement(By.xpath(usernamePath));
 		newUsername.sendKeys((String) TS0017.get(6));
@@ -715,15 +815,15 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description17,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description17 + ".jpg")).build());
 
-		ArrayList TS0018 = d.getData("TS0018", "TS0006");
+		ArrayList TS0018 = d.getData("TS0018", "TC0006");
 		String passwordPath = (String) TS0018.get(5);
 		WebElement newPwd = driver.findElement(By.xpath(passwordPath));
 		newPwd.sendKeys((String) TS0018.get(6));
 		String description18 = (String) TS0018.get(0) + " " + TS0018.get(1);
 		extentTest.log(Status.PASS, description18,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description18 + ".jpg")).build());
-		
-		ArrayList TS0019 = d.getData("TS0019", "TS0006");
+
+		ArrayList TS0019 = d.getData("TS0019", "TC0006");
 		String confirmPasswordPath = (String) TS0019.get(5);
 		WebElement confirmPassword = driver.findElement(By.xpath(confirmPasswordPath));
 		confirmPassword.sendKeys((String) TS0019.get(6));
@@ -732,7 +832,7 @@ public class ProfileManagement extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description19 + ".jpg")).build());
 
 		// Email Multi Factor Authentication
-		ArrayList TS0020 = d.getData("TS0020", "TS0006");
+		ArrayList TS0020 = d.getData("TS0020", "TC0006");
 		String mfaPath = (String) TS0020.get(5);
 		WebElement mfaEmailBtn = driver.findElement(By.xpath(mfaPath));
 		mfaEmailBtn.click();
@@ -740,7 +840,7 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description20,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description20 + ".jpg")).build());
 		// Next
-		ArrayList TS0021= d.getData("TS0021", "TS0006");
+		ArrayList TS0021 = d.getData("TS0021", "TC0006");
 		String nextBtnPath = (String) TS0021.get(5);
 		WebElement nextBtn = driver.findElement(By.xpath(nextBtnPath));
 		nextBtn.click();
