@@ -31,11 +31,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ClaimsAndDisputes extends BaseTest {
-	String loginPage = "https://providerportal.vnshealthplans.org/login";
 
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	dataDrivenPP d = new dataDrivenPP();
-	
+
 	@Test(priority = -1, testName = "Login as Provider")
 	public void loginProvider() throws InterruptedException, IOException {
 
@@ -98,7 +97,7 @@ public class ClaimsAndDisputes extends BaseTest {
 
 	}
 
-	@Test(priority = 1, testName = "7.1 PROV-TECH-REQ-028 - Claims - Verify Create a lightning page to display claim information")
+	@Test(priority = 1, dependsOnMethods="loginProvider", testName = "7.1 PROV-TECH-REQ-028 - Claims - Verify Create a lightning page to display claim information")
 	public void verifyClaimInfoDisplay() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0027");
@@ -119,7 +118,7 @@ public class ClaimsAndDisputes extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 	}
 
-	@Test(priority = 2, testName = "7.2 PROV-TECH-REQ-029 - Claims - Verify Provide the ability to send search parameters to return claim data")
+	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "7.2 PROV-TECH-REQ-029 - Claims - Verify Provide the ability to send search parameters to return claim data")
 	public void verifySearchClaimData() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0028");
@@ -131,16 +130,15 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
-		
 		ArrayList TS0008 = d.getData("TS0008", "TC0028");
 		String claimTitlePath = (String) TS0008.get(5);
-		Assert.assertEquals(driver.findElement(By.xpath(claimTitlePath)).getText(), "Claims");
+		Assert.assertEquals(driver.findElement(By.xpath(claimTitlePath)).getText(), (String) TS0008.get(6));
 		Thread.sleep(10000);
 		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 
-		//Search filter
+		// Search filter
 		ArrayList TS0009 = d.getData("TS0009", "TC0028");
 		String filterDatePath = (String) TS0009.get(5);
 		WebElement filterDate = driver.findElement(By.xpath(filterDatePath));
@@ -156,7 +154,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
 		extentTest.log(Status.PASS, description10,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
-		
+
 		ArrayList TS0011 = d.getData("TS0011", "TC0028");
 		String memberIDPath = (String) TS0011.get(5);
 		WebElement memberID = driver.findElement(By.xpath(memberIDPath));
@@ -174,7 +172,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description12 = (String) TS0012.get(0) + " " + TS0012.get(1);
 		extentTest.log(Status.PASS, description12,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description12 + ".jpg")).build());
-		
+
 		ArrayList TS0013 = d.getData("TS0013", "TC0028");
 		String lNamePath = (String) TS0013.get(5);
 		WebElement lName = driver.findElement(By.xpath(lNamePath));
@@ -206,18 +204,15 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description16 = (String) TS0016.get(0) + " " + TS0016.get(1);
 		extentTest.log(Status.PASS, description16,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description16 + ".jpg")).build());
-		
-		
-		
+
 		ArrayList TS0017 = d.getData("TS0017", "TC0028");
 		String claimTypePath = (String) TS0017.get(5);
-		WebElement claimType = driver.findElement(
-				By.xpath(claimTypePath));
+		WebElement claimType = driver.findElement(By.xpath(claimTypePath));
 		claimType.click();
 		String description17 = (String) TS0017.get(0) + " " + TS0017.get(1);
 		extentTest.log(Status.PASS, description17,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description17 + ".jpg")).build());
-		
+
 //////////////
 		ArrayList TS0018 = d.getData("TS0018", "TC0028");
 		String medicalPath = (String) TS0018.get(5);
@@ -226,7 +221,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description18 = (String) TS0018.get(0) + " " + TS0018.get(1);
 		extentTest.log(Status.PASS, description18,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description18 + ".jpg")).build());
-		
+
 		ArrayList TS0019 = d.getData("TS0019", "TC0028");
 		String statusPath = (String) TS0019.get(5);
 		WebElement status = driver.findElement(By.xpath(statusPath));
@@ -243,7 +238,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description20,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description20 + ".jpg")).build());
 
-		//Search
+		// Search
 		ArrayList TS0021 = d.getData("TS0021", "TC0028");
 		String searchPath = (String) TS0021.get(5);
 		WebElement search = driver.findElement(By.xpath(searchPath));
@@ -253,7 +248,7 @@ public class ClaimsAndDisputes extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description21 + ".jpg")).build());
 
 		Thread.sleep(7000);
-		
+
 		ArrayList TS0022 = d.getData("TS0022", "TC0028");
 		String exportPath = (String) TS0022.get(5);
 		Assert.assertEquals(driver.findElement(By.xpath(exportPath)).getText(), "Export");
@@ -263,7 +258,7 @@ public class ClaimsAndDisputes extends BaseTest {
 
 	}
 
-	@Test(priority = 3, testName = "7.3 PROV-TECH-REQ-030 - Claims - Verify Display historical claims in table format")
+	@Test(priority = 3,  dependsOnMethods="loginProvider",  testName = "7.3 PROV-TECH-REQ-030 - Claims - Verify Display historical claims in table format")
 	public void verifyDisplayClaimsTableFormat() throws InterruptedException, IOException {
 
 //WH
@@ -286,12 +281,12 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
-		
+
 		System.out.println("Claims Displayed");
-		
+
 	}
-	
-	@Test(priority = 4, testName = "7.4 PROV-TECH-REQ-031 - Claims - Verify Display historical claims in card format")
+
+	@Test(priority = 4, dependsOnMethods="loginProvider",  testName = "7.4 PROV-TECH-REQ-031 - Claims - Verify Display historical claims in card format")
 	public void verifyDisplayClaimsCardFormat() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0030");
@@ -303,7 +298,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
-		//CLAIM CARD NOT DISPLAYED; ONLY MOBILE VIEW
+		// CLAIM CARD NOT DISPLAYED; ONLY MOBILE VIEW
 		Thread.sleep(5000);
 		ArrayList TS0008 = d.getData("TS0008", "TC0030");
 		String claimCardPath = (String) TS0008.get(5);
@@ -313,8 +308,8 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 	}
-	
-	@Test(priority = 6, testName = "7.6 PROV-TECH-REQ-033- Claims - Verify Provide the ability to export data if data is in a table view")
+
+	@Test(priority = 6, dependsOnMethods="loginProvider",  testName = "7.6 PROV-TECH-REQ-033- Claims - Verify Provide the ability to export data if data is in a table view")
 	public void verifyExportClaimData() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0032");
@@ -334,10 +329,81 @@ public class ClaimsAndDisputes extends BaseTest {
 		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
-		
+
 		Thread.sleep(5000);
 
-		check_file_exist("ClaimsDataExport.csv");
+		ArrayList TS0009 = d.getData("TS0009", "TC0032");
+		String fileName = (String) TS0009.get(6);
+		check_file_exist(fileName);
+		// String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		// extentTest.log(Status.PASS, description9,
+		// MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9
+		// + ".jpg")).build());
 	}
 
+	@Test(priority = 8, dependsOnMethods="loginProvider",  testName = "7.8 PROV-TECH-REQ-035 - Claims - Verify Provide the ability for all provider types to submit claims disputes via FormStack")
+	public void verifySubmitClaimDispute() throws InterruptedException, IOException {
+
+		// Open Appeals and Disputes Page
+		Thread.sleep(5000);
+		ArrayList<String> TS0007 = d.getData("TS0007", "TC0034");
+		String disputePath = (String) TS0007.get(5);
+		WebElement dispute = driver.findElement(By.xpath(disputePath));
+		dispute.click();
+		Thread.sleep(5000);
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+
+		// Click Submit Dispute Btn
+		ArrayList<String> TS0008 = d.getData("TS0008", "TC0034");
+		String claimDisputeBtnPath = (String) TS0008.get(5);
+		WebElement claimsDisputeBtn = driver.findElement(By.xpath(claimDisputeBtnPath));
+		claimsDisputeBtn.click();
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		Thread.sleep(5000);
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		// Verify provider-claims-dispute-form Opens
+		ArrayList<String> TS0009 = d.getData("TS0009", "TC0034");
+		String formLabelPath = (String) TS0009.get(5);
+		Assert.assertEquals(driver.findElement(By.xpath(formLabelPath)).getText(), "Provider Claims Dispute Form");
+		Thread.sleep(10000);
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+	}
+	
+	@Test(priority = 10, dependsOnMethods="loginProvider", testName = "7.10 PROV-TECH-REQ-037 - Claims - Provide the ability for providers to access the Availity portal via a link")
+	public void verifyAccessAvailityPortal() throws InterruptedException, IOException {
+		Thread.sleep(5000);
+		//Click Provider Directory
+		ArrayList<String> TS0007 = d.getData("TS0007", "TC0036");
+		String providerToolkitPath = (String) TS0007.get(5);
+		WebElement providerDirectory= driver.findElement(By.xpath(providerToolkitPath));
+		providerDirectory.click();
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+		
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		Thread.sleep(5000);
+		//Assert Availity Link
+		ArrayList<String> TS0008 = d.getData("TS0008", "TC0036");
+		String availityPath = (String) TS0008.get(5);
+		Assert.assertEquals(driver.findElement(By.xpath(availityPath)).getAttribute("href"), "https://www.vnshealthplans.org/health-professionals/provider-portal/");
+		Thread.sleep(10000);
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		
+		Thread.sleep(5000);
+	}
 }

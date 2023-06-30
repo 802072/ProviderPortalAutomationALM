@@ -32,7 +32,7 @@ public class PatientReferralForEnrollment extends BaseTest {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	dataDrivenPP d = new dataDrivenPP();
 
-	@Test(priority = -1, testName = "Login as Provider")
+	@Test(priority = -1,  testName = "Login as Provider")
 	public void loginProvider() throws InterruptedException, IOException {
 
 		ArrayList TS0001 = d.getData("TS0001", "TC0025");
@@ -93,7 +93,7 @@ public class PatientReferralForEnrollment extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description6 + ".jpg")).build());
 	}
 
-	@Test(priority = 1, testName = "6.1 PROV-TECH-REQ-025 - Patient Referrals for Enrollment - Verify Provide the ability to capture a Referral for Enrollment")
+	@Test(priority = 1, dependsOnMethods="loginProvider", testName = "6.1 PROV-TECH-REQ-025 - Patient Referrals for Enrollment - Verify Provide the ability to capture a Referral for Enrollment")
 	public void verifyPatientRefEnrollment() throws InterruptedException, IOException {
 
 		// Patients
@@ -152,7 +152,7 @@ public class PatientReferralForEnrollment extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
 	}
 
-	@Test(priority = 3, testName = "6.3 PROV-TECH-REQ-027 - Patient Referrals for Enrollment - Verify For prospective providers, display a link to FAQs/Knowledge Article to search for information")
+	@Test(priority = 3,dependsOnMethods="loginProvider", testName = "6.3 PROV-TECH-REQ-027 - Patient Referrals for Enrollment - Verify For prospective providers, display a link to FAQs/Knowledge Article to search for information")
 	public void verifyResourcesLinkDisplay() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		//Open Resources

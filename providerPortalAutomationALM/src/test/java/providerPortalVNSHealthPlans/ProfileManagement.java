@@ -135,7 +135,7 @@ public class ProfileManagement extends BaseTest {
 //		Thread.sleep(5000);
 	}
 
-	@Test(priority = 1, testName = "3.1 PROV-TECH-REQ-001 - Profile Management - Verify Create a lightning page to display Provider profile information")
+	@Test(priority = 1, dependsOnMethods="loginProvider", testName = "3.1 PROV-TECH-REQ-001 - Profile Management - Verify Create a lightning page to display Provider profile information")
 	public void verifyProfileDisplay() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0001");
@@ -176,7 +176,7 @@ public class ProfileManagement extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
 	}
 
-	@Test(priority = 2, testName = "'3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
+	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "'3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
 	public void verifySubmitProfileInfoUpdate() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 
@@ -523,7 +523,7 @@ public class ProfileManagement extends BaseTest {
 
 	}
 
-	@Test(priority = 3, testName = "3.3 PROV-TECH-REQ-003 - Profile Management - Verify Provide the ability for an Admin to register a group, add/remove members from groups and add/remote appropriate permissions to users")
+	@Test(priority = 3, dependsOnMethods="loginProvider", testName = "3.3 PROV-TECH-REQ-003 - Profile Management - Verify Provide the ability for an Admin to register a group, add/remove members from groups and add/remote appropriate permissions to users")
 	public void verifyAdminManageGroups() throws InterruptedException, IOException {
 
 		// LOGIN AS ADMIN
@@ -555,7 +555,7 @@ public class ProfileManagement extends BaseTest {
 
 	}
 
-	@Test(priority = 4, testName = "3.4 PROV-TECH-REQ-004 - Profile Management - Verify Provide the ability for a provider to update their Provider Panel Status")
+	@Test(priority = 4, dependsOnMethods="loginProvider", testName = "3.4 PROV-TECH-REQ-004 - Profile Management - Verify Provide the ability for a provider to update their Provider Panel Status")
 	public void verifyProviderPanelStatusUpdate() throws InterruptedException, IOException {
 		ArrayList TS0007 = d.getData("TS0007", "TC0004");
 		String myAccPath = (String) TS0007.get(5);

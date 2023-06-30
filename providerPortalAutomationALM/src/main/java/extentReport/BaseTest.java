@@ -34,6 +34,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.internal.TestNGMethod;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -71,7 +72,7 @@ public class BaseTest {
 //			mobileEmulation.put("deviceName", "Galaxy S5");
 			break;
 		}
-		// driver.manage().window().maximize();
+		 driver.manage().window().maximize();
 
 		// Capabilities capabilities = ((RemoteWebDriver) driver).getCapabilities();
 		// String device = capabilities.getBrowserName() + " "
@@ -80,6 +81,7 @@ public class BaseTest {
 		// String author = context.getCurrentXmlTest().getParameter("author");
 
 		extentTest = extentReports.createTest(context.getName());
+	
 		// extentTest.assignAuthor(author);
 		// extentTest.assignDevice(device);
 
@@ -141,10 +143,10 @@ public class BaseTest {
 		String home = System.getProperty("user.home");
 		String file_name = filename;
 		String file_with_location = home + "\\Downloads\\" + file_name;
-		//System.out.println("Function Name ===========================" + home + "\\Downloads\\" + file_name);
+		
 		File file = new File(file_with_location);
 		if (file.exists()) {
-			//System.out.println(file_with_location + " is present");
+	
 			extentTest.log(Status.PASS, filename + " has been downloaded");
 			String result = "File Present";
 			return result;
@@ -154,5 +156,6 @@ public class BaseTest {
 			String result1 = result;
 			return result1;
 		}
+
 	}
 }
