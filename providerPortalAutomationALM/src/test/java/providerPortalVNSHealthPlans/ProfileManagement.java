@@ -155,13 +155,14 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
+		Thread.sleep(5000);
 		// PROVIDER PRAC
 		ArrayList TS0008 = d.getData("TS0008", "TC0001");
 		String provPracDrpDwnPath = (String) TS0008.get(5);
 		WebElement provPractice = driver.findElement(By.xpath(provPracDrpDwnPath));
 		provPractice.click();
 
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
@@ -176,7 +177,7 @@ public class ProfileManagement extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
 	}
 
-	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "'3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
+	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
 	public void verifySubmitProfileInfoUpdate() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 

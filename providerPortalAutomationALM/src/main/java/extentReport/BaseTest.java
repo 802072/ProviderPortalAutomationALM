@@ -1,7 +1,15 @@
 package extentReport;
 
-import java.awt.Desktop;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import java.awt.AWTException;
+import java.awt.Desktop;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -10,6 +18,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -45,6 +55,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.WebDriverManagerException;
 import java.util.HashMap;
 import dataDrivenPP.dataDrivenPP;
+import org.testng.annotations.DataProvider;
 
 public class BaseTest {
 	public static WebDriver driver;
@@ -72,7 +83,7 @@ public class BaseTest {
 //			mobileEmulation.put("deviceName", "Galaxy S5");
 			break;
 		}
-		 driver.manage().window().maximize();
+		driver.manage().window().maximize();
 
 		// Capabilities capabilities = ((RemoteWebDriver) driver).getCapabilities();
 		// String device = capabilities.getBrowserName() + " "
@@ -81,7 +92,7 @@ public class BaseTest {
 		// String author = context.getCurrentXmlTest().getParameter("author");
 
 		extentTest = extentReports.createTest(context.getName());
-	
+
 		// extentTest.assignAuthor(author);
 		// extentTest.assignDevice(device);
 
@@ -125,9 +136,10 @@ public class BaseTest {
 		extentTest.assignCategory(m.getAnnotation(Test.class).groups());
 	}
 
-	/*
-	 * @AfterTest public void teardown() { driver.quit(); }
-	 */
+	@AfterTest
+	public void teardown() {
+		driver.close();
+	}
 
 	public String captureScreenshot(String screenShotName) throws IOException {
 		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -136,6 +148,11 @@ public class BaseTest {
 		FileUtils.copyFile(sourceFile, path);
 
 		return screenshotpath;
+//		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(5000))
+//				.takeScreenshot(driver);
+//		String dest = System.getProperty("user.dir") + "/Screenshots/" + screenShotName + ".png";
+//		ImageIO.write(screenshot.getImage(), "PNG", new File(dest));
+//		return dest;
 
 	}
 
@@ -143,10 +160,10 @@ public class BaseTest {
 		String home = System.getProperty("user.home");
 		String file_name = filename;
 		String file_with_location = home + "\\Downloads\\" + file_name;
-		
+
 		File file = new File(file_with_location);
 		if (file.exists()) {
-	
+
 			extentTest.log(Status.PASS, filename + " has been downloaded");
 			String result = "File Present";
 			return result;
@@ -158,4 +175,5 @@ public class BaseTest {
 		}
 
 	}
+
 }

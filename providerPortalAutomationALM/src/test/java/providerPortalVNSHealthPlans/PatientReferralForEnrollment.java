@@ -112,7 +112,6 @@ public class PatientReferralForEnrollment extends BaseTest {
 		ArrayList TS0008 = d.getData("TS0008", "TC0025");
 		String enrollmentRefPath = (String) TS0008.get(5);
 		WebElement enrollmentRef = driver.findElement(By.xpath(enrollmentRefPath));
-		Thread.sleep(5000);
 		try {
 			enrollmentRef.click();
 		} catch (StaleElementReferenceException e) {
@@ -140,7 +139,7 @@ public class PatientReferralForEnrollment extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
 
 		Thread.sleep(5000);
-		// String parentHandle = driver.getWindowHandle();
+		 String parentHandle = driver.getWindowHandle();
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
@@ -150,6 +149,8 @@ public class PatientReferralForEnrollment extends BaseTest {
 		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
 		extentTest.log(Status.PASS, description10,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
+		driver.close(); // close newly opened window when done with it
+		driver.switchTo().window(parentHandle); // switch back to the original window
 	}
 
 	@Test(priority = 3,dependsOnMethods="loginProvider", testName = "6.3 PROV-TECH-REQ-027 - Patient Referrals for Enrollment - Verify For prospective providers, display a link to FAQs/Knowledge Article to search for information")

@@ -103,8 +103,8 @@ public class Authorizations extends BaseTest {
 		// Click Auth Link
 		ArrayList TS0007 = d.getData("TS0007", "TC0043");
 		String authorizationsPath = (String) TS0007.get(5);
-		WebElement claims = driver.findElement(By.xpath(authorizationsPath));
-		claims.click();
+		WebElement authorizations = driver.findElement(By.xpath(authorizationsPath));
+		authorizations.click();
 		Thread.sleep(5000);
 		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
 		extentTest.log(Status.PASS, description7,
@@ -268,8 +268,8 @@ public class Authorizations extends BaseTest {
 		// Click Auth Link
 		ArrayList TS0007 = d.getData("TS0007", "TC0045");
 		String authorizationsPath = (String) TS0007.get(5);
-		WebElement claims = driver.findElement(By.xpath(authorizationsPath));
-		claims.click();
+		WebElement authorizations = driver.findElement(By.xpath(authorizationsPath));
+		authorizations.click();
 		Thread.sleep(5000);
 		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
 		extentTest.log(Status.PASS, description7,
@@ -311,15 +311,15 @@ public class Authorizations extends BaseTest {
 		// Click Auth Link
 		ArrayList TS0007 = d.getData("TS0007", "TC0048");
 		String authorizationsPath = (String) TS0007.get(5);
-		WebElement claims = driver.findElement(By.xpath(authorizationsPath));
-		claims.click();
+		WebElement authorizations = driver.findElement(By.xpath(authorizationsPath));
+		authorizations.click();
 		Thread.sleep(5000);
 		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
 		// click Export Button
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		ArrayList TS0008 = d.getData("TS0008", "TC0048");
 		String authExportBtnPath = (String) TS0008.get(5);
 		WebElement claimsExportBtn = driver.findElement(By.xpath(authExportBtnPath));
@@ -337,52 +337,86 @@ public class Authorizations extends BaseTest {
 
 	}
 
-	@Test(priority = 6, dependsOnMethods = "loginProvider", testName = "10.7 PROV-TECH-REQ-057 - Authorizations - Verify Provide the ability to submit Authorization Requests")
+	@Test(priority = 7, dependsOnMethods = "loginProvider", testName = "10.7 PROV-TECH-REQ-057 - Authorizations - Verify Provide the ability to submit Authorization Requests")
 	public void verifySubmitAuthRequests() throws InterruptedException, IOException {
-	//	WORKING HERE
-		
+		// WORKING HERE
+
 		// Click Auth Link
 		ArrayList TS0007 = d.getData("TS0007", "TC0049");
 		String authorizationsPath = (String) TS0007.get(5);
-		WebElement claims = driver.findElement(By.xpath(authorizationsPath));
-		claims.click();
+		WebElement authorizations = driver.findElement(By.xpath(authorizationsPath));
+		authorizations.click();
 		Thread.sleep(5000);
 		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
-	
-		
-		  // SUBMIT A NEW AUTH*********************************************
-		  
-		  WebElement submitNewAuthBtn = driver .findElement(By.
-		  xpath("//button[contains(text(),'Submit a New Authorization Request')]"));
-		  submitNewAuthBtn.click(); WebElement fName =
-		  driver.findElement(By.xpath("//input[@name='MemberFirstNameSearchText']"));
-		  fName.sendKeys("JUANA");
-		  
-		  WebElement lName =
-		  driver.findElement(By.xpath("//input[@name='MemberLastNameSearchText']"));
-		  lName.sendKeys("AZCONA");
-		  
-		  WebElement memID = driver.findElement(By.xpath("//input[@name='MemberId']"));
-		  memID.sendKeys("V70015095");
-		  
-		  WebElement nextBtn =
-		  driver.findElement(By.xpath("//button[normalize-space()='Next']"));
-		  nextBtn.click();
-		  
-		  Thread.sleep(5000);
-		  
-		  WebElement yesBtn =
-		  driver.findElement(By.xpath("(//span[@class='slds-radio_faux'])[1]"));
-		  yesBtn.click();
-		  
-		  WebElement next =
-		  driver.findElement(By.xpath("//button[normalize-space()='Next']"));
-		  next.click(); //extentTest.log(Status.PASS, "Submit a New Authorization");
 
-		 
-	
+		// SUBMIT A NEW AUTH*********************************************
+
+		ArrayList TS0008 = d.getData("TS0008", "TC0049");
+		String submitNewAuthPath = (String) TS0008.get(5);
+		WebElement submitNewAuthBtn = driver.findElement(By.xpath(submitNewAuthPath));
+		submitNewAuthBtn.click();
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		//FirstName
+		ArrayList TS0009 = d.getData("TS0009", "TC0049");
+		String fNamePath = (String) TS0009.get(5);
+		WebElement fName = driver.findElement(By.xpath(fNamePath));
+		fName.sendKeys((String) TS0009.get(6));
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+
+		//LastName
+		ArrayList TS0010 = d.getData("TS0010", "TC0049");
+		String lNamePath = (String) TS0010.get(5);
+		WebElement lName = driver.findElement(By.xpath(lNamePath));
+		lName.sendKeys((String) TS0009.get(6));
+		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
+		extentTest.log(Status.PASS, description10,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
+
+		//Member ID
+		ArrayList TS0011 = d.getData("TS0011", "TC0049");
+		String memIDPath = (String) TS0011.get(5);
+		WebElement memID = driver.findElement(By.xpath(memIDPath));
+		memID.sendKeys((String) TS0009.get(6));
+		String description11 = (String) TS0011.get(0) + " " + TS0011.get(1);
+		extentTest.log(Status.PASS, description11,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description11 + ".jpg")).build());
+		//Next
+		ArrayList TS0012 = d.getData("TS0012", "TC0049");
+		String nextBtnPath = (String) TS0012.get(5);
+		WebElement nextBtn = driver.findElement(By.xpath(nextBtnPath));
+		nextBtn.click();
+		String description12 = (String) TS0012.get(0) + " " + TS0012.get(1);
+		extentTest.log(Status.PASS, description12,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description12 + ".jpg")).build());
+		
+		Thread.sleep(5000);
+
+		//Yes
+		ArrayList TS0013 = d.getData("TS0013", "TC0049");
+		String yesBtnPath = (String) TS0013.get(5);
+		WebElement yesBtn = driver.findElement(By.xpath(yesBtnPath));
+		yesBtn.click();
+		String description13 = (String) TS0013.get(0) + " " + TS0013.get(1);
+		extentTest.log(Status.PASS, description13,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description13 + ".jpg")).build());
+
+		//Next
+		ArrayList TS0014 = d.getData("TS0014", "TC0049");
+		String nextBtnPath1 = (String) TS0014.get(5);
+		WebElement next = driver.findElement(By.xpath(nextBtnPath1));
+		next.click(); 
+		String description14 = (String) TS0014.get(0) + " " + TS0014.get(1);
+		extentTest.log(Status.PASS, description14,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description14 + ".jpg")).build());
+
+
 	}
 
 }
