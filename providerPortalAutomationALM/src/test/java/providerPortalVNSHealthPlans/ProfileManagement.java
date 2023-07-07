@@ -135,7 +135,7 @@ public class ProfileManagement extends BaseTest {
 //		Thread.sleep(5000);
 	}
 
-	@Test(priority = 1, dependsOnMethods="loginProvider", testName = "3.1 PROV-TECH-REQ-001 - Profile Management - Verify Create a lightning page to display Provider profile information")
+	@Test(priority = 1, dependsOnMethods = "loginProvider", testName = "3.1 PROV-TECH-REQ-001 - Profile Management - Verify Create a lightning page to display Provider profile information")
 	public void verifyProfileDisplay() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		ArrayList TS0007 = d.getData("TS0007", "TC0001");
@@ -177,7 +177,7 @@ public class ProfileManagement extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
 	}
 
-	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
+	@Test(priority = 2, dependsOnMethods = "loginProvider", testName = "3.2 PROV-TECH-REQ-002 - Profile Management - Verify Provide the ability for a provider to submit a request to change their profile information")
 	public void verifySubmitProfileInfoUpdate() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 
@@ -221,6 +221,7 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description9,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
 
+		//Request Change
 		ArrayList TS0010 = d.getData("TS0010", "TC0002");
 		String reqChangeBtnPath = (String) TS0010.get(5);
 		WebElement reqChangeBtn = driver.findElement(By.xpath(reqChangeBtnPath));
@@ -362,7 +363,7 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description26,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description26 + ".jpg")).build());
 
-		////////////////// WH
+		//
 		ArrayList TS0027 = d.getData("TS0027", "TC0002");
 		String NYStatePath = (String) TS0027.get(5);
 		WebElement newStateValue = driver.findElement(By.xpath(NYStatePath));
@@ -455,76 +456,86 @@ public class ProfileManagement extends BaseTest {
 		extentTest.log(Status.PASS, description37,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description37 + ".jpg")).build());
 
-//		// Panel Status
-//		WebElement panelStatusBtn = driver.findElement(By.xpath("(//span[@class='slds-checkbox_faux'])[11]"));
-//		panelStatusBtn.click();
-//		WebElement newPanelSelect = driver.findElement(By.xpath("//select[@name='NewPanelStatus']"));
-//		newPanelSelect.click();
-//		WebElement optionNewPanel = driver
-//				.findElement(By.xpath("//option[@value='PanelStatusPicklistChoiceSet.Accepting New Patients']"));
-//		optionNewPanel.click();
-
-		// Languages Spoken
+		// Panel Status
 		ArrayList TS0038 = d.getData("TS0038", "TC0002");
-		String langBtnPath = (String) TS0038.get(5);
-		WebElement languageBtn = driver.findElement(By.xpath(langBtnPath));
-		languageBtn.click();
+		String panelStatus = (String) TS0038.get(5);
+		WebElement panelStatusBtn = driver.findElement(By.xpath(panelStatus));
+		panelStatusBtn.click();
 		String description38 = (String) TS0038.get(0) + " " + TS0038.get(1);
 		extentTest.log(Status.PASS, description38,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description38 + ".jpg")).build());
 
 		ArrayList TS0039 = d.getData("TS0039", "TC0002");
-		String newLangPath = (String) TS0039.get(5);
-		WebElement newLanguages = driver.findElement(By.xpath(newLangPath));
-		newLanguages.click();
+		String newPanelOption = (String) TS0039.get(5);
+		WebElement newPanelSelect = driver.findElement(By.xpath(newPanelOption));
+		newPanelSelect.click();
 		String description39 = (String) TS0039.get(0) + " " + TS0039.get(1);
 		extentTest.log(Status.PASS, description39,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description39 + ".jpg")).build());
 
 		ArrayList TS0040 = d.getData("TS0040", "TC0002");
-		String engLangPath = (String) TS0040.get(5);
-		WebElement optionEng = driver.findElement(By.xpath(engLangPath));
-		optionEng.click();
+		String panelOption = (String) TS0040.get(5);
+		WebElement optionNewPanel = driver.findElement(By.xpath(panelOption));
+		optionNewPanel.click();
 		String description40 = (String) TS0040.get(0) + " " + TS0040.get(1);
 		extentTest.log(Status.PASS, description40,
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description40 + ".jpg")).build());
-//UNABLE TO SELECT MULtiPLE LANGUAGES
-		// NextBtn
+			MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description40 + ".jpg")).build());
+
+		// Languages Spoken
 		ArrayList TS0041 = d.getData("TS0041", "TC0002");
-		String nextBtnPath = (String) TS0041.get(5);
-		WebElement nextBtn = driver.findElement(By.xpath(nextBtnPath));
-		nextBtn.click();
+		String langBtnPath = (String) TS0041.get(5);
+		WebElement languageBtn = driver.findElement(By.xpath(langBtnPath));
+		languageBtn.click();
+		
 		String description41 = (String) TS0041.get(0) + " " + TS0041.get(1);
 		extentTest.log(Status.PASS, description41,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description41 + ".jpg")).build());
 
-		Thread.sleep(5000);
-		// NextPage
 		ArrayList TS0042 = d.getData("TS0042", "TC0002");
-		String nextBtnPath1 = (String) TS0042.get(5);
-		WebElement nextBtn1 = driver.findElement(By.xpath(nextBtnPath1));
-		nextBtn1.click();
+		String engLangPath = (String) TS0042.get(5);
+		WebElement optionEng = driver.findElement(By.xpath(engLangPath));
+		optionEng.click();
+		
 		String description42 = (String) TS0042.get(0) + " " + TS0042.get(1);
 		extentTest.log(Status.PASS, description42,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description42 + ".jpg")).build());
 
-		// Assert.assertEquals(driver
-		// .findElement(By.xpath("//span[contains(text(),'We have captured your
-		// information. ')]")).getText(),
-		// "We have captured your information.");
-
+		//UNABLE TO SELECT MULtiPLE LANGUAGES
+		// NextBtn
 		ArrayList TS0043 = d.getData("TS0043", "TC0002");
-		String finishBtnPath = (String) TS0043.get(5);
-		WebElement finishBtn = driver.findElement(By.xpath(finishBtnPath));
-		finishBtn.click();
+		String nextBtnPath = (String) TS0043.get(5);
+		WebElement nextBtn = driver.findElement(By.xpath(nextBtnPath));
+		nextBtn.click();
 		Thread.sleep(5000);
 		String description43 = (String) TS0043.get(0) + " " + TS0043.get(1);
 		extentTest.log(Status.PASS, description43,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description43 + ".jpg")).build());
 
+		// NextPage
+		ArrayList TS0044 = d.getData("TS0044", "TC0002");
+		String nextBtnPath1 = (String) TS0044.get(5);
+		WebElement nextBtn1 = driver.findElement(By.xpath(nextBtnPath1));
+		nextBtn1.click();
+		Thread.sleep(5000);
+		String description44 = (String) TS0044.get(0) + " " + TS0044.get(1);
+		extentTest.log(Status.PASS, description44,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description44 + ".jpg")).build());
+		// Assert.assertEquals(driver
+		// .findElement(By.xpath("//span[contains(text(),'We have captured your
+		// information. ')]")).getText(),
+		// "We have captured your information.");
+
+		ArrayList TS0045 = d.getData("TS0045", "TC0002");
+		String finishBtnPath = (String) TS0045.get(5);
+		WebElement finishBtn = driver.findElement(By.xpath(finishBtnPath));
+		finishBtn.click();
+		Thread.sleep(5000);
+		String description45 = (String) TS0045.get(0) + " " + TS0045.get(1);
+		extentTest.log(Status.PASS, description45,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description45 + ".jpg")).build());
 	}
 
-	@Test(priority = 3, dependsOnMethods="loginProvider", testName = "3.3 PROV-TECH-REQ-003 - Profile Management - Verify Provide the ability for an Admin to register a group, add/remove members from groups and add/remote appropriate permissions to users")
+	@Test(priority = 3, dependsOnMethods = "loginProvider", testName = "3.3 PROV-TECH-REQ-003 - Profile Management - Verify Provide the ability for an Admin to register a group, add/remove members from groups and add/remote appropriate permissions to users")
 	public void verifyAdminManageGroups() throws InterruptedException, IOException {
 
 		// LOGIN AS ADMIN
@@ -556,7 +567,7 @@ public class ProfileManagement extends BaseTest {
 
 	}
 
-	@Test(priority = 4, dependsOnMethods="loginProvider", testName = "3.4 PROV-TECH-REQ-004 - Profile Management - Verify Provide the ability for a provider to update their Provider Panel Status")
+	@Test(priority = 4, dependsOnMethods = "loginProvider", testName = "3.4 PROV-TECH-REQ-004 - Profile Management - Verify Provide the ability for a provider to update their Provider Panel Status")
 	public void verifyProviderPanelStatusUpdate() throws InterruptedException, IOException {
 		ArrayList TS0007 = d.getData("TS0007", "TC0004");
 		String myAccPath = (String) TS0007.get(5);

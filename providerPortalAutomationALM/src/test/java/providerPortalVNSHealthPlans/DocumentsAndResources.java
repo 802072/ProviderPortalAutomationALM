@@ -42,7 +42,7 @@ public class DocumentsAndResources extends BaseTest {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	dataDrivenPP d = new dataDrivenPP();
 
-	@BeforeTest
+	@Test
 	public void loginProvider() throws InterruptedException, IOException {
 
 		ArrayList TS0001 = d.getData("TS0001", "TC0038");
@@ -101,6 +101,46 @@ public class DocumentsAndResources extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description6 + ".jpg")).build());
 		Thread.sleep(5000);
 
+	}
+
+	@Test(priority = 1, dependsOnMethods = "loginProvider", description = "9.1 PROV-TECH-REQ-045 - Documents & Resources - Verify Create a lightning page to display document information")
+	public void verifyDocumentPage() throws InterruptedException, IOException {
+
+		// Click Resources Link
+		ArrayList TS0007 = d.getData("TS0007", "TC0037");
+		String resourcesPath = (String) TS0007.get(5);
+		WebElement resources = driver.findElement(By.xpath(resourcesPath));
+		resources.click();
+		Thread.sleep(5000);
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+
+		// Resource type
+		ArrayList TS0008 = d.getData("TS0008", "TC0037");
+		String resTypeBtnPath = (String) TS0008.get(5);
+		WebElement resourceType = driver.findElement(By.xpath(resTypeBtnPath));
+		resourceType.click();
+		Thread.sleep(5000);
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		// Document
+		ArrayList<String> TS0009 = d.getData("TS0009", "TC0037");
+		String documentPath = (String) TS0009.get(5);
+		WebElement document = driver.findElement(By.xpath(documentPath));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", document);
+		document.click();
+		Thread.sleep(5000);
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+	}
+
+	@Test(priority = 2, dependsOnMethods = "loginProvider", description = "Open Communication Center")
+	public void openComCenter() throws InterruptedException, IOException, AWTException {
+		//Click Com Center
 		ArrayList TS0007 = d.getData("TS0007", "TC0038");
 		String communiCenterPath = (String) TS0007.get(5);
 		WebElement communicationCenter = driver.findElement(By.xpath(communiCenterPath));
@@ -110,7 +150,7 @@ public class DocumentsAndResources extends BaseTest {
 		extentTest.log(Status.PASS, description7,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
 
-		// SEND MESSAGE
+		//Send Message
 		ArrayList TS0008 = d.getData("TS0008", "TC0038");
 		String sendBtnPath = (String) TS0008.get(5);
 		WebElement sendBtn = driver.findElement(By.xpath(sendBtnPath));
@@ -160,7 +200,7 @@ public class DocumentsAndResources extends BaseTest {
 
 	}
 
-	@Test(priority = 2, dataProviderClass = DataProviderTestdata.class, dataProvider = "UploadFilePath", description = "9.2 PROV-TECH-REQ-046 - Documents & Resources - Verify Providers should be able to upload documents with a document type")
+	@Test(priority = 2, dependsOnMethods = "openComCenter", dataProviderClass = DataProviderTestdata.class, dataProvider = "UploadFilePath", description = "9.2 PROV-TECH-REQ-046 - Documents & Resources - Verify Providers should be able to upload documents with a document type")
 	public void verifyDocumentUpload(String path, String fileName)
 			throws InterruptedException, IOException, AWTException {
 		// Via Communication Center
@@ -202,41 +242,61 @@ public class DocumentsAndResources extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(fileName + ".jpg")).build());
 	}
 
-//	@Test(priority = 3,dependsOnMethods="loginProvider", description = "9.3 PROV-TECH-REQ-047 - Documents & Resources - Verify Provide the ability to filter document list")
-//	public void verifyFilterDocList() throws InterruptedException, IOException {
-//		
-//		
-//		Thread.sleep(5000);
-//		//Click Resources Link
-//		ArrayList TS0007 = d.getData("TS0007", "TC0038");
-//		String resourcesPath = (String) TS0007.get(5);
-//		WebElement resources = driver.findElement(By.xpath(resourcesPath));
-//		resources.click();
-//		Thread.sleep(5000);
-//		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
-//		extentTest.log(Status.PASS, description7,
-//				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
-//
-//		//
-//		ArrayList TS0008 = d.getData("TS0008", "TC0038");
-//		String resTypeBtnPath = (String) TS0008.get(5);
-//		WebElement resourceType = driver.findElement(By.xpath(resTypeBtnPath));
-//		resourceType.click();
-//		Thread.sleep(5000);
-//		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
-//		extentTest.log(Status.PASS, description8,
-//				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
-//	
-//		ArrayList<String> TS0009 = d.getData("TS0009", "TC0038");
-//		String documentPath = (String) TS0009.get(5);
-//		WebElement document = driver.findElement(By.xpath(documentPath));
-//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", document);
-//		document.click();
-//		//document.click();
-//		Thread.sleep(5000);
-//		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
-//		extentTest.log(Status.PASS, description9,
-//				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
-//	}
+	@Test(priority = 3, dependsOnMethods = "loginProvider", description = "9.3 PROV-TECH-REQ-047 - Documents & Resources - Verify Provide the ability to filter document list")
+	public void verifyFilterDocList() throws InterruptedException, IOException {
 
+		Thread.sleep(5000);
+		// Click Resources Link
+		ArrayList TS0007 = d.getData("TS0007", "TC0038");
+		String resourcesPath = (String) TS0007.get(5);
+		WebElement resources = driver.findElement(By.xpath(resourcesPath));
+		resources.click();
+		Thread.sleep(5000);
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+
+		// Resource type
+		ArrayList TS0008 = d.getData("TS0008", "TC0038");
+		String resTypeBtnPath = (String) TS0008.get(5);
+		WebElement resourceType = driver.findElement(By.xpath(resTypeBtnPath));
+		resourceType.click();
+		Thread.sleep(5000);
+		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
+		extentTest.log(Status.PASS, description8,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		// Document
+		ArrayList<String> TS0009 = d.getData("TS0009", "TC0038");
+		String documentPath = (String) TS0009.get(5);
+		WebElement document = driver.findElement(By.xpath(documentPath));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", document);
+		document.click();
+
+		Thread.sleep(5000);
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+	}
+
+	@Test(priority = 6, dependsOnMethods = "loginProvider", description = "9.6 PROV-TECH-REQ-050 - Documents & Resources - Verify Provide the ability to search the Provider directory by Health Plan")
+	public void verifyProviderDirectory() throws InterruptedException, IOException {
+		// Click Provider Directory Link
+		ArrayList TS0007 = d.getData("TS0007", "TC0042");
+		String providerDirectoryPath = (String) TS0007.get(5);
+		WebElement providerDirectory = driver.findElement(By.xpath(providerDirectoryPath));
+		providerDirectory.click();
+		Thread.sleep(5000);
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+		Assert.assertEquals(
+				driver.findElement(By.xpath("//h1[normalize-space()='Search for In-Network Providers']")).getText(),
+				"Search for In-Network Providers");
+
+		String description7 = (String) TS0007.get(0) + " " + TS0007.get(1);
+		extentTest.log(Status.PASS, description7,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description7 + ".jpg")).build());
+
+	}
 }

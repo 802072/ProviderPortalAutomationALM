@@ -19,7 +19,8 @@
 		</classes>
 	</test>
 
-	<test name="3.2 Verify Submit Profile Info Update Request">
+	<test
+		name="3.2 Verify Submit Profile Info Update Request">
 		<parameter
 			name="browserName" value="Chrome" />
 		<parameter name="author"
@@ -67,7 +68,7 @@
 				</methods>
 			</class>
 		</classes>
-	</test>-->
+	</test>
 
 
 	<test
@@ -293,5 +294,34 @@
 				</methods>
 			</class>
 		</classes>
-	</test>-->
+	</test>
+	<test
+		name="10.7 PROV-TECH-REQ-057 - Authorizations - Verify Provide the ability to submit Authorization Requests">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.Authorizations">
+				<methods>
+					<include name="loginProvider" />
+					<include name="verifySubmitAuthRequests" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test
+		name="10.8 PROV-TECH-REQ-058 - Authorizations - Verify Provide the ability for Prospective Providers o access knowledge base via a link on the login screen, to VNS Health website to further understand the onboarding process.">
+		<parameter name="browserName"
+			value="Chrome" />
+		<parameter name="author" value="Dayanzi" />
+		<classes>
+			<class name="providerPortalVNSHealthPlans.Authorizations">
+				<methods>
+					<include name="verifyProspectiveProviderKnowledgeLink" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
 </suite> 

@@ -117,6 +117,25 @@ public class ClaimsAndDisputes extends BaseTest {
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
 		
+		//Click first row to view claim details
+		ArrayList TS0009 = d.getData("TS0009", "TC0027");
+		String firstRowPath = (String) TS0009.get(5);
+		WebElement firstRow = driver.findElement(By.xpath(firstRowPath));
+		firstRow.click();
+		Thread.sleep(5000);
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+		
+		//Click Remittances Tab
+		ArrayList TS0010 = d.getData("TS0010", "TC0027");
+		String remitPath = (String) TS0010.get(5);
+		WebElement remit = driver.findElement(By.xpath(remitPath));
+		remit.click();
+		Thread.sleep(5000);
+		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
+		extentTest.log(Status.PASS, description10,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
 	}
 
 	@Test(priority = 2, dependsOnMethods="loginProvider", testName = "7.2 PROV-TECH-REQ-029 - Claims - Verify Provide the ability to send search parameters to return claim data")
@@ -385,7 +404,7 @@ public class ClaimsAndDisputes extends BaseTest {
 	public void verifyAccessAvailityPortal() throws InterruptedException, IOException {
 		Thread.sleep(5000);
 		//Click Provider Directory
-		ArrayList<String> TS0007 = d.getData("TS0007", "TC0036");
+		ArrayList<String> TS0007 = d.getData("TS0007", "TC0035");
 		String providerToolkitPath = (String) TS0007.get(5);
 		WebElement providerDirectory= driver.findElement(By.xpath(providerToolkitPath));
 		Thread.sleep(5000);		
@@ -399,7 +418,7 @@ public class ClaimsAndDisputes extends BaseTest {
 		}
 		Thread.sleep(5000);
 		//Assert Availity Link
-		ArrayList<String> TS0008 = d.getData("TS0008", "TC0036");
+		ArrayList<String> TS0008 = d.getData("TS0008", "TC0035");
 		String availityPath = (String) TS0008.get(5);
 		Assert.assertEquals(driver.findElement(By.xpath(availityPath)).getAttribute("href"), "https://www.vnshealthplans.org/health-professionals/provider-portal/");
 		Thread.sleep(10000);

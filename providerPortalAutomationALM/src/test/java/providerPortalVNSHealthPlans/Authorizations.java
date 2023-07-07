@@ -118,6 +118,24 @@ public class Authorizations extends BaseTest {
 		String description8 = (String) TS0008.get(0) + " " + TS0008.get(1);
 		extentTest.log(Status.PASS, description8,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description8 + ".jpg")).build());
+
+		// Click First Row
+		ArrayList TS0009 = d.getData("TS0009", "TC0043");
+		String firstRowPath = (String) TS0009.get(5);
+		WebElement firstRow = driver.findElement(By.xpath(firstRowPath));
+		firstRow.click();
+		String description9 = (String) TS0009.get(0) + " " + TS0009.get(1);
+		extentTest.log(Status.PASS, description9,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description9 + ".jpg")).build());
+
+		//Click Provider Label
+		ArrayList TS0010 = d.getData("TS0010", "TC0043");
+		String providerPath = (String) TS0010.get(5);
+		WebElement provider = driver.findElement(By.xpath(providerPath));
+		provider.click();
+		String description10 = (String) TS0010.get(0) + " " + TS0010.get(1);
+		extentTest.log(Status.PASS, description10,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description10 + ".jpg")).build());
 	}
 
 	@Test(priority = 2, dependsOnMethods = "loginProvider", testName = "10.2 PROV-TECH-REQ-052 - Authorizations - Verify Provide the ability to send search parameters to return authorization data")
@@ -339,7 +357,6 @@ public class Authorizations extends BaseTest {
 
 	@Test(priority = 7, dependsOnMethods = "loginProvider", testName = "10.7 PROV-TECH-REQ-057 - Authorizations - Verify Provide the ability to submit Authorization Requests")
 	public void verifySubmitAuthRequests() throws InterruptedException, IOException {
-	
 
 		// Click Auth Link
 		ArrayList TS0007 = d.getData("TS0007", "TC0049");
@@ -440,7 +457,7 @@ public class Authorizations extends BaseTest {
 		String startDatePath = (String) TS0017.get(5);
 		WebElement startDate = driver.findElement(By.xpath(startDatePath));
 		startDate.sendKeys("07/01/2023");
-		//startDate.sendKeys((String) TS0017.get(6));
+		// startDate.sendKeys((String) TS0017.get(6));
 		String description17 = (String) TS0017.get(0) + " " + TS0017.get(1);
 		extentTest.log(Status.PASS, description17,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description17 + ".jpg")).build());
@@ -449,7 +466,7 @@ public class Authorizations extends BaseTest {
 		ArrayList TS0018 = d.getData("TS0018", "TC0049");
 		String endDatePath = (String) TS0018.get(5);
 		WebElement endDate = driver.findElement(By.xpath(endDatePath));
-		//endDate.sendKeys((String) TS0018.get(6));
+		// endDate.sendKeys((String) TS0018.get(6));
 		endDate.sendKeys("07/05/2023");
 		String description18 = (String) TS0018.get(0) + " " + TS0018.get(1);
 		extentTest.log(Status.PASS, description18,
@@ -572,7 +589,7 @@ public class Authorizations extends BaseTest {
 		extentTest.log(Status.PASS, description31,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description31 + ".jpg")).build());
 
-		//Serv ZIP
+		// Serv ZIP
 		ArrayList TS0032 = d.getData("TS0032", "TC0049");
 		String servZIPPath = (String) TS0032.get(5);
 		WebElement servZIP = driver.findElement(By.xpath(servZIPPath));
@@ -581,7 +598,7 @@ public class Authorizations extends BaseTest {
 		extentTest.log(Status.PASS, description32,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description32 + ".jpg")).build());
 
-		//Serv Phone
+		// Serv Phone
 		ArrayList TS0033 = d.getData("TS0033", "TC0049");
 		String phonePath = (String) TS0033.get(5);
 		WebElement phone = driver.findElement(By.xpath(phonePath));
@@ -599,7 +616,7 @@ public class Authorizations extends BaseTest {
 		extentTest.log(Status.PASS, description34,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description34 + ".jpg")).build());
 
-		//Diagnosis Codes
+		// Diagnosis Codes
 		ArrayList TS0035 = d.getData("TS0035", "TC0049");
 		String diagCodePath = (String) TS0035.get(5);
 		WebElement diagCode = driver.findElement(By.xpath(diagCodePath));
@@ -619,7 +636,7 @@ public class Authorizations extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description36 + ".jpg")).build());
 
 		Thread.sleep(5000);
-		
+
 		// Next
 		ArrayList TS0037 = d.getData("TS0037", "TC0049");
 		String nextBtnPath3 = (String) TS0037.get(5);
@@ -630,7 +647,7 @@ public class Authorizations extends BaseTest {
 		extentTest.log(Status.PASS, description37,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description37 + ".jpg")).build());
 		Thread.sleep(10000);
-		
+
 		// Finish
 		ArrayList TS0038 = d.getData("TS0038", "TC0049");
 		String finishBtnPath = (String) TS0038.get(5);
@@ -642,19 +659,22 @@ public class Authorizations extends BaseTest {
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description38 + ".jpg")).build());
 
 	}
+
 	@Test(priority = 8, testName = "Verify Provide the ability for Prospective Providers to access knowledge base via a link on the login screen, to VNS Health website to further understand the onboarding process.")
 	public void verifyProspectiveProviderKnowledgeLink() throws InterruptedException, IOException {
 		ArrayList TS0001 = d.getData("TS0001", "TC0050");
 		String description1 = (String) TS0001.get(0) + " " + TS0001.get(1);
 		extentTest.log(Status.PASS, description1);
 
+		//Open Login Page
 		ArrayList TS0002 = d.getData("TS0002", "TC0050");
 		String loginUrl = (String) TS0002.get(6);
 		driver.get(loginUrl);
 		String description2 = (String) TS0002.get(0) + " " + TS0002.get(1);
 		extentTest.log(Status.PASS, description2,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description2 + ".jpg")).build());
-		
+
+		//Click Help Resources
 		ArrayList TS0003 = d.getData("TS0003", "TC0050");
 		String helpResourcesBtnPath = (String) TS0003.get(5);
 		WebElement helpResoucesBtn = driver.findElement(By.xpath(helpResourcesBtnPath));
@@ -664,6 +684,15 @@ public class Authorizations extends BaseTest {
 		extentTest.log(Status.PASS, description3,
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description3 + ".jpg")).build());
 
+		//Verify Heading Displayed
+		ArrayList TS0004 = d.getData("TS0004", "TC0050");
+		String headingPath = (String) TS0004.get(5);
+		Assert.assertEquals(
+				driver.findElement(By.xpath(headingPath)).isDisplayed(), true);
+		String description4 = (String) TS0004.get(0) + " " + TS0004.get(1);
+		extentTest.log(Status.PASS, description4,
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(description4 + ".jpg")).build());
+
 	}
-	
+
 }
